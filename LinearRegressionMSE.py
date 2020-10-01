@@ -21,22 +21,22 @@ class LinearRegression:
 		Returns: self
 	'''
 		# No of data points in dataset
-        n = len(y)   
+		n = len(y)   
 
-        # Initializing the theta and bias
-        self.theta = np.zeros(X.shape[1])
-        self.bias = 0
+		# Initializing the theta and bias
+		self.theta = np.zeros(X.shape[1])
+		self.bias = 0
 		
-	for i in range(epochs):
-		# Predicted value = X matrix multiplied with theta
-		# Difference between the predicted and true value for training set
-		loss = X @ self.theta + self.bias - y
+		for i in range(epochs):
+			# Predicted value = X matrix multiplied with theta
+			# Difference between the predicted and true value for training set
+			loss = X @ self.theta + self.bias - y
 
-		# Gradint descent : theta = theta - (learning_rate/n)*(partial derivative of cost function)
-		self.theta -= alpha*(1/n)*(np.sum([loss[j] * X[j] for j in range(n)]))
-		self.bias -= alpha*(1/n)*(np.sum(loss))
+			# Gradint descent : theta = theta - (learning_rate/n)*(partial derivative of cost function)
+			self.theta -= alpha*(1/n)*(np.sum([loss[j] * X[j] for j in range(n)]))
+			self.bias -= alpha*(1/n)*(np.sum(loss))
 
-	return self
+		return self
 	
 	def predict(self, X):
 	'''
@@ -51,4 +51,4 @@ class LinearRegression:
         y - 1-dimensional numpy array of shape (n_samples,) which contains the predicted values.
    	'''
 	
-	return X @ self.theta + self.bias
+		return X @ self.theta + self.bias
